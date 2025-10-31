@@ -370,96 +370,166 @@ body {
 
 <script>
 const questions = [
-  {
-    q: "Assume you have to train with RL techniques a robot on an assembly line that has to remove defective elements from a continuous belt. How will you define the reward function? Which long-term definitions of reward make sense with your definition of rewards?",
-    opts: [
-      "Positive reward for removing defective items, negative for removing good items, undiscounted infinite horizon",
-      "Penalize every item left on belt, discounted with γ=0.9",
-      "Give +1 reward each timestep, episodic task",
-      "Negative reward for every motor movement to minimize energy"
-    ],
-    correct: [0]
-  },
-  {
-    q: "Mark the problems that can be represented as a standard MDP (Markovian Decision Process):",
-    opts: [
-      "Solving Atari Pong with actions being 4 buttons and input only the current frame",
-      "Agent learning to play Go against a learning opponent that adapts to your strategy",
-      "Agent learning to play Othello against a fixed program opponent with full board state",
-      "All of the above"
-    ],
-    correct: [2]
-  },
-  {
-    q: "Mark the true sentences:",
-    opts: [
-      "With only the V value function for each state, we can compute the greedy policy for V",
-      "Greedification step can be applied to policies with continuous actions",
-      "If a policy π is greedy with respect to the value function for the equiprobable random policy, then it is an optimal policy",
-      "From only the Q value function we can compute the greedy policy for Q"
-    ],
-    correct: [3]
-  },
-  {
-    q: "Considering learning in the tabular case (without function approximation), select the true sentences:",
-    opts: [
-      "Q-learning obtains less biased estimations of Q(s,a) than Monte Carlo",
-      "Monte Carlo is an on-policy method",
-      "In practical cases the value of α is equal for all states but it can decrease with learning experience",
-      "Exceptionally, exploration probability of one action a in one state s can be set to zero when Q(s,a) < 0"
-    ],
-    correct: [1, 2]
-  },
-  {
-    q: "Select the true sentences:",
-    opts: [
-      "n-steps policy learning is an off-policy learning method",
-      "Off-policy learning is better than on-policy when there is a lot of stochasticity in the environment transitions",
-      "When ε = 0, Q-learning and SARSA are the same algorithm",
-      "SARSA with fixed ε-greedy exploration (ε > 0) in general does not learn the optimal policy for an MDP"
-    ],
-    correct: [2, 3]
-  },
-  {
-    q: "Select the true sentences:",
-    opts: [
-      "A good property of linear FA for Monte Carlo in policy evaluation is that it ensures convergence to the optimal policy because there is only a global optimal",
-      "Batch methods solve the problem of the moving target by computing the target not only for the current state but for a larger number of samples at each iteration",
-      "DQN uses two copies of the DNN with different weights, one of them frozen during several experiences to solve the problem of moving target",
-      "DQN does not need the property of Markovian transitions to converge because it generates a non-linear approximation"
-    ],
-    correct: [1, 2]
-  },
-  {
-    q: "Select the true sentences:",
-    opts: [
-      "Looking at the results of Rainbow, it seems more useful the Dueling technique than the Prioritized Experience Replay technique",
-      "A3C algorithm does not need a Replay Experience Buffer because using several workers we train the network with uncorrelated data",
-      "In practice, A3C algorithm is faster than DQN because (working several agents in parallel) it generates more samples in the same time",
-      "DQN is an off-policy method"
-    ],
-    correct: [1, 2, 3]
-  },
-  {
-    q: "In one short line each: what is the Actor and the Critic?",
-    opts: [
-      "Actor: policy network that outputs action probabilities; Critic: network that estimates state value",
-      "Actor: chooses loss function; Critic: does backpropagation",
-      "Both are the same network with shared layers",
-      "Actor: maximizes entropy; Critic: minimizes bias"
-    ],
-    correct: [0]
-  },
-  {
-    q: "In Proximal Policy Optimization (PPO), the importance-sampling ratio r is used to:",
-    opts: [
-      "Measure similarity between old and new policy distributions",
-      "Compute the discounted return",
-      "Replace the need for a critic",
-      "Increase exploration"
-    ],
-    correct: [0]
-  }
+{
+q: "Assume you have to train with RL techniques a robot on an assembly line that has to remove defective elements from a continuous belt. How will you define the reward function? Which long-term definitions of reward make sense with your definition of rewards?",
+opts: [
+"Positive reward for removing defective items, negative for removing good items, undiscounted infinite horizon",
+"Penalize every item left on belt, discounted with γ=0.9",
+"Give +1 reward each timestep, episodic task",
+"Negative reward for every motor movement to minimize energy"
+],
+correct: [0]
+},
+{
+q: "Mark the problems that can be represented as a standard MDP (Markovian Decision Process):",
+opts: [
+"Solving Atari Pong with actions being 4 buttons and input only the current frame",
+"Agent learning to play Go against a learning opponent that adapts to your strategy",
+"Agent learning to play Othello against a fixed program opponent with full board state",
+"All of the above"
+],
+correct: [2]
+},
+{
+q: "Mark the true sentences:",
+opts: [
+"With only the V value function for each state, we can compute the greedy policy for V",
+"Greedification step can be applied to policies with continuous actions",
+"If a policy π is greedy with respect to the value function for the equiprobable random policy, then it is an optimal policy",
+"From only the Q value function we can compute the greedy policy for Q"
+],
+correct: [3]
+},
+{
+q: "Considering learning in the tabular case (without function approximation), select the true sentences:",
+opts: [
+"Q-learning obtains less biased estimations of Q(s,a) than Monte Carlo",
+"Monte Carlo is an on-policy method",
+"In practical cases the value of α is equal for all states but it can decrease with learning experience",
+"Exceptionally, exploration probability of one action a in one state s can be set to zero when Q(s,a) < 0"
+],
+correct: [1, 2]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"n-steps policy learning is an off-policy learning method",
+"Off-policy learning is better than on-policy when there is a lot of stochasticity in the environment transitions",
+"When ε = 0, Q-learning and SARSA are the same algorithm",
+"SARSA with fixed ε-greedy exploration (ε > 0) in general does not learn the optimal policy for an MDP"
+],
+correct: [2, 3]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"A good property of linear FA for Monte Carlo in policy evaluation is that it ensures convergence to the optimal policy because there is only a global optimal",
+"Batch methods solve the problem of the moving target by computing the target not only for the current state but for a larger number of samples at each iteration",
+"DQN uses two copies of the DNN with different weights, one of them frozen during several experiences to solve the problem of moving target",
+"DQN does not need the property of Markovian transitions to converge because it generates a non-linear approximation"
+],
+correct: [1, 2]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"Looking at the results of Rainbow, it seems more useful the Dueling technique than the Prioritized Experience Replay technique",
+"A3C algorithm does not need a Replay Experience Buffer because using several workers we train the network with uncorrelated data",
+"In practice, A3C algorithm is faster than DQN because (working several agents in parallel) it generates more samples in the same time",
+"DQN is an off-policy method"
+],
+correct: [1, 2, 3]
+},
+{
+q: "In one short line each: what is the Actor and the Critic?",
+opts: [
+"Actor: policy network that outputs action probabilities; Critic: network that estimates state value",
+"Actor: chooses loss function; Critic: does backpropagation",
+"Both are the same network with shared layers",
+"Actor: maximizes entropy; Critic: minimizes bias"
+],
+correct: [0]
+},
+{
+q: "In Proximal Policy Optimization (PPO), the importance-sampling ratio r is used to:",
+opts: [
+"Measure similarity between old and new policy distributions",
+"Compute the discounted return",
+"Replace the need for a critic",
+"Increase exploration"
+],
+correct: [0]
+},
+{
+q: "Mark the true sentences:",
+opts: [
+"Greedification step can be applied to stochastic policies.",
+"From only the Q value function we can compute the greedy policy for Q.",
+"In order to find the optimal policy using Policy Iteration, the phase of greedification of the policy has to be done for all the same states at each iteration.",
+"If a policy P is greedy, with respect to its own value function V, then it is an optimal policy."
+],
+correct: [1]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"Monte Carlo is different from Q-learning in the sense that Monte Carlo does not need to apply exploration to find the optimal policy while Q-learning needs exploration.",
+"Monte Carlo, estimation of Q(s,a) is done applying Bellman equations.",
+"Monte Carlo is an on-policy method.",
+"Monte Carlo can be done in continuous learning as long as we apply the adequate discounting long-term return."
+],
+correct: [2]
+},
+{
+q: "Considering learning in the tabular case (without function approximation), select the true sentences:",
+opts: [
+"Exceptionally, exploration probability of one action a in one state s can be set to zero when Q(s,a) < 0",
+"When ε = 0, Q-learning and SARSA are the same algorithm",
+"Given a large enough set of tuples s,a,r,s' obtained using random actions, we can compute the Q-values for an optimal deterministic policy π.",
+"Q-values learned using Q-learning and Monte-Carlo using ε-greedy exploration (ε > 0) converge to the same limit when we give enough experiences for learning."
+],
+correct: [1, 2]
+},
+{
+q: "In the linear function approximation framework, select the true sentences:",
+opts: [
+"Considering the properties of the n-steps algorithm, it should converge when applying gradient descent with linear function approximation.",
+"Only gradient descent methods can be applied to linear function approximation.",
+"Sarsa algorithm converges when applying gradient descent with linear function approximation.",
+"Given a large as needed set of tuples s,a,r,s' obtained using random actions and using an on-line off-policy method (like Q-learning), we can learn best parameters θ that minimize the MSE error in linear function approximation."
+],
+correct: [0, 3]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"Batch methods solve the problem of the moving target by computing the target not only for the current state but for a larger number of samples at each iteration.",
+"Replay buffer has a limited capacity to remove old samples s,a,r,s' because they were generated by old policies and rewards are not right.",
+"Limited capacity of Replay buffer prioritize to remove old samples s,a,r,s' because they were generated by old policies and under new policy they appear with a different frequency.",
+"DQN uses two copies of the DNN with different weights, one of them frozen during several experiences to solve the problem of correlated data."
+],
+correct: [0, 2]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"Advantage value A(s,a) is an estimation of the advantage of action a over any other action.",
+"Double Q-learning is, in general, faster than DQN because it does not suffer from the moving target problem.",
+"An improvement over DQN is to use (in the computation of the target) two different NNs: one to select the action of the policy and another to compute the value of the selected action.",
+"Prioritized Experience Replay consists in changing the exploration procedure of ε-learning to make it faster."
+],
+correct: [2]
+},
+{
+q: "Select the true sentences:",
+opts: [
+"α parameter in Policy gradient algorithms is critical because direction of the gradient is misleading in some cases.",
+"In order to evaluate the goodness of a policy π, we always need to estimate Q^π or V^π value functions.",
+"The output of a NN in policy gradient methods are the parameters of a probability distribution function.",
+"Stochastic policies can represent policies for continuous action spaces."
+],
+correct: [0, 3]
+}
 ];
 
 let currentQuestion = 0;
